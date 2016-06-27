@@ -1,0 +1,175 @@
+# execute on boot ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+exec --no-startup-id i3-msg 'workspace 1; exec uxterm; exec xxkb; exec feh --randomize --bg-fill ~/media/pictures; exec xcompmgr'
+
+# variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# alt
+set $m1 Mod1
+# numlock
+set $m2 Mod2
+# super
+set $m4 Mod4
+# fn
+set $m5 Mod5
+# vim-like navigation
+set $up    k
+set $down  j
+set $left  h
+set $right l
+
+# containers navigation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# change focus
+bindsym $m4+$left         focus  left
+bindsym $m4+$down         focus  down
+bindsym $m4+$up           focus  up
+bindsym $m4+$right        focus  right
+# move container
+bindsym $m4+Shift+$left   move   left
+bindsym $m4+Shift+$down   move   down
+bindsym $m4+Shift+$up     move   up
+bindsym $m4+Shift+$right  move   right
+
+# containers modes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# split horizontally
+bindsym $m4+b split h
+# split vertically
+bindsym $m4+v split v
+# toggle fullscreen mode for the focused container
+bindsym $m4+f fullscreen toggle
+# change container layout (stacked, tabbed, toggle split)
+bindsym $m4+s layout stacking
+bindsym $m4+w layout tabbed
+bindsym $m4+e layout toggle split
+# toggle tiling/floating
+bindsym $m4+Shift+space floating toggle
+# moving floating container
+floating_modifier $m4
+# focus the parent container
+bindsym $m4+a focus parent
+# focus the child container
+bindsym $m4+x focus child
+
+# workspaces ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# workspace bindings
+bindsym $m4+asciitilde workspace 0
+bindsym $m4+1          workspace 1
+bindsym $m4+2          workspace 2
+bindsym $m4+3          workspace 3
+bindsym $m4+4          workspace 4
+bindsym $m4+5          workspace 5
+bindsym $m4+6          workspace 6
+bindsym $m4+7          workspace 7
+bindsym $m4+8          workspace 8
+bindsym $m4+9          workspace 9
+# "carousel" between workspaces
+bindsym $m4+Tab workspace next
+bindsym $m4+Shift+Tab workspace prev
+# move focused container to workspace
+bindsym $m4+Shift+asciitilde move container to workspace 0; workspace 0
+bindsym $m4+Shift+1 move container to workspace 1; workspace 1
+bindsym $m4+Shift+2 move container to workspace 2; workspace 2
+bindsym $m4+Shift+3 move container to workspace 3; workspace 3
+bindsym $m4+Shift+4 move container to workspace 4; workspace 4
+bindsym $m4+Shift+5 move container to workspace 5; workspace 5
+bindsym $m1+Shift+6 move container to workspace 6; workspace 6
+bindsym $m1+Shift+7 move container to workspace 7; workspace 7
+bindsym $m1+Shift+8 move container to workspace 8; workspace 8
+bindsym $m1+Shift+9 move container to workspace 9; workspace 9
+
+# resize mode ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bindsym $m4+r mode "resize"
+# resize settings
+mode "resize" {
+	bindsym $left       resize shrink width 5 px or 5 ppt
+	bindsym $right      resize grow width 5 px or 5 ppt
+	bindsym $down       resize grow height 5 px or 5 ppt
+	bindsym $up         resize shrink height 5 px or 5 ppt
+	# same for the arrow keys
+	bindsym Left        resize shrink width 5 px or 5 ppt
+	bindsym Right       resize grow width 5 px or 5 ppt
+	bindsym Down        resize grow height 5 px or 5 ppt
+	bindsym Up          resize shrink height 5 px or 5 ppt
+	# back to normal mode
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# font ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font xft: Meslo LG L DZ Regular for Powerline 8
+#font pango: Terminess Powerline 9 
+
+# container borders ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# thickness
+new_float  pixel 0
+new_window pixel 0
+# border colors
+client.unfocused        #bcbcbc #bcbcbc #151515 #bcbcbc
+client.focused_inactive #bcbcbc #bcbcbc #151515 #bcbcbc
+client.focused          #348899 #348899 #151515 #348899
+client.urgent           #962d3e #962d3e #151515 #962d3e
+
+# i3bar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bar {
+	status_command ~/.i3/scripts/i3status.sh 
+	#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+	#font pango: Terminess Powerline 9
+	font: Lucida Console 8 #Meslo LG L DZ Regular for Powerline 8
+	
+	position top
+    separator_symbol "|"
+	colors {
+		background #1b0b10
+		statusline #867c75 
+		separator  #867c75
+		#                  border  backgr. text
+        focused_workspace  #82354f #82354f #1b0b10
+		inactive_workspace #82354f #1b0b10 #867c75
+		urgent_workspace   #ff9900 #ff9900 #1b0b10
+		binding_mode       #962d3e #962d3e #1b0b10
+	}
+}
+
+# keybindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# reload the configuration file
+bindsym $m4+Shift+c reload
+# restart i3 inplace
+bindsym $m4+Shift+r restart
+# exit i3
+bindsym $m4+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+# run terminal
+bindsym $m4+Return exec uxterm
+# kill container
+bindsym $m4+q kill
+# run dmenu
+# bindsym $m4+d exec dmenu_run -fn 'Terminus-9' 
+bindsym $m4+d exec rofi -show run -config "/home/tener/.Xresourses" -color-enabled -separator-style "none" -lines "5" -width "30"
+# audio ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# mute 
+bindsym XF86AudioMute exec amixer -q sset 'Master' toggle
+# volume up
+bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 3.5dB+
+# volume down
+bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 3.5dB-
+# backlight ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# backlight up
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+# backlight down
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+# custom ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# take a screenshot
+bindsym Print                  exec "scrot '%F__%T__$wx$h.png' -e 'mv $f ~/scrot/'"
+# snippingtool
+bindsym --release Shift+Print  exec "scrot --select '%F__%T__$wx$h.png' --exec 'mv $f ~/scrot/' --quality 100"
+# run telegram
+bindsym $m4+T exec telegram; workspace 3
+# lock screen
+bindsym $m4+Shift+x exec .i3/scripts/lock
+
+# custom containers preferences ~~~~~~~~~~~~~~~~~~~~~~~~
+assign [class="yandex-browser-beta"] → 2
+assign [class="telegram"] → 3
+assign [class="libreoffice"] → 4
+assign [class="evince"] → 4
+for_window [window_role="pop-up"]       floating enable
+for_window [window_role="task_dialog"]  floating enable

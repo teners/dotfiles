@@ -1,0 +1,73 @@
+! --------------------------------------------------------------------------------
+! xterm config
+! --------------------------------------------------------------------------------
+! xterm*faceName: "Meslo LG L for Powerline":style=Regular:size=9:antialias=true
+ 
+ xterm*faceName: Ubuntu Mono derivative Powerline:style=Regular:size=11:antialias=true
+ xterm*fullscreen: never
+ xterm*utf8: 1
+ xterm*cursorBlink: true
+
+ Xft.dpi: 96.0
+ Xft.hinting: true
+ Xft.hintstyle: hintslight
+ Xft.antialias: true
+ Xft.rgba: rgb
+
+! --------------------------------------------------------------------------------
+! rofi colors
+! --------------------------------------------------------------------------------
+ rofi.color-enabled: true
+ rofi.color-window: #273238, #273238, #1e2529
+ rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
+ rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+ rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
+ rofi.font:         Meslo LG L DZ Regular for Powerline 9
+ rofi.opacity:      75
+
+! --------------------------------------------------------------------------------
+! urxvt settings
+! --------------------------------------------------------------------------------
+ URxvt.jumpScroll: false
+ URxvt.font: xft:Terminess Powerline:style=Regular:size=12
+ URxvt.scrollBar: false
+ URxvt.scrollTtyOutput: false
+ URxvt.scrollWithBuffer: true
+ URxvt.scrollTtyKeypress: true
+ URxvt.internalBorder: 0 
+ URxvt.externalBorder: 0
+ URxvt.borderLess: false 
+ URxvt.cursorUnderline: false
+ URxvt.url-launcher: yandex-browser-beta 
+ URxvt.cursorBlink: true
+
+! --------------------------------------------------------------------------------
+! terminal colors
+! --------------------------------------------------------------------------------
+*.foreground:   #bccae2
+*.background:   #262626
+*.cursorColor:  #bccae2
+!black
+*color0:     #393939
+*color8:     #AF875F
+!red
+*color1:     #BF1E2D
+*color9:     #E7212A
+!green
+*color2:     #9DBA3A
+*color10:    #A9C938
+!yellow
+*color3:     #F5B915
+*color11:    #F7D325
+!blue
+*color4:     #1CA1DB
+*color12:    #00AFDA
+!magenta
+*color5:     #652F90
+*color13:    #894E9F
+!cyan
+*color6:     #EA7D24
+*color14:    #F79321
+!white
+*color7:     #E7E8E9
+*color15:    #F3F3F4
