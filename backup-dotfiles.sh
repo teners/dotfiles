@@ -1,10 +1,12 @@
 #!/bin/bash 
 # for cron daily
 WHEREAMI=$(pwd)
-if [ -d "/home/tener/git/dotfiles" ]; then
-    cd /home/tener/git/dotfiles
+DOTFILES="/home/tener/git/dotfiles"
+if [ -d "$DOTFILES" ]; then
+    cd $DOTFILES
 else
-    zenity --error --text="An error occured: \"~/git/dotfiles\" directory doesn\'t exists."
+    zenity --error --text="An error occured while executing $0: \
+                           \"$DOTFILES\" directory doesn\'t exists."
     exit
 fi
 
