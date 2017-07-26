@@ -1,7 +1,7 @@
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo 'git $' && return
     hg root >/dev/null 2>/dev/null && echo 'hg $' && return
-    echo '$'
+    echo '>>>'
 }
 
 function virtualenv_info {
@@ -9,7 +9,7 @@ function virtualenv_info {
 }
 
 PROMPT='
-%{$fg[blue]%}%n%{$reset_color%} in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}
+%{$fg[blue]%}%n%{$reset_color%} # %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}
 $(virtualenv_info)$(prompt_char) '
 
 
@@ -29,11 +29,11 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%} ✚"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%} ✹"
-ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} ✖"
+ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%} A"
+ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%} M"
+ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} D"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} ➜"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} ═"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} U"
 
 RPROMPT="${return_code} ${git_branch} ${rvm}"

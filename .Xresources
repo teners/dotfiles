@@ -1,12 +1,14 @@
 ! --------------------------------------------------------------------------------
 ! xterm config
 ! --------------------------------------------------------------------------------
-! xterm*faceName: "Meslo LG L for Powerline":style=Regular:size=9:antialias=true
  
- xterm*faceName: Ubuntu Mono derivative Powerline:style=Regular:size=11:antialias=true
+! xterm*faceName: DejaVu Sans Mono Book:style=Regular:size=11:antialias=true
+ xterm*faceName: xft:Hack:style=Regular:size=11:antialias=true
  xterm*fullscreen: never
  xterm*utf8: 1
  xterm*cursorBlink: true
+ xterm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
+ xterm*selectToClipboard: true
 
  Xft.dpi: 96.0
  Xft.hinting: true
@@ -17,13 +19,16 @@
 ! --------------------------------------------------------------------------------
 ! rofi colors
 ! --------------------------------------------------------------------------------
- rofi.color-enabled: true
- rofi.color-window: #273238, #273238, #1e2529
- rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
- rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+ rofi.color-enabled: false
+ rofi.color-window: #262626, #262626, #1e2529
+ rofi.color-normal: #262626, #c1c1c1, #262626, #bccae2, #262626
+ rofi.color-active: #bccae2, #bccae2, #bccae2, #394249, #80cbc4
  rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
- rofi.font:         Meslo LG L DZ Regular for Powerline 9
- rofi.opacity:      75
+ rofi.font:         Liberation Regular 16
+ rofi.opacity:      70
+ rofi.menu_bw:      0
+ rofi.width:        100
+ rofi.padding:      460
 
 ! --------------------------------------------------------------------------------
 ! urxvt settings
@@ -44,30 +49,40 @@
 ! --------------------------------------------------------------------------------
 ! terminal colors
 ! --------------------------------------------------------------------------------
-*.foreground:   #bccae2
-*.background:   #262626
-*.cursorColor:  #bccae2
-!black
-*color0:     #393939
-*color8:     #AF875F
-!red
-*color1:     #BF1E2D
-*color9:     #E7212A
-!green
-*color2:     #9DBA3A
-*color10:    #A9C938
-!yellow
-*color3:     #F5B915
-*color11:    #F7D325
-!blue
-*color4:     #1CA1DB
-*color12:    #00AFDA
-!magenta
-*color5:     #652F90
-*color13:    #894E9F
-!cyan
-*color6:     #EA7D24
-*color14:    #F79321
-!white
-*color7:     #E7E8E9
-*color15:    #F3F3F4
+! special
+*.foreground:   #c5c5c5
+*.background:   #1c1c1c
+*.cursorColor:  #c5c5c5
+
+! black
+*.color0:       #1c1c1c
+*.color8:       #666666
+
+! red
+*.color1:       #ff005b
+*.color9:       #ff00a0
+
+! green
+*.color2:       #cee318
+*.color10:      #ccff00
+
+! yellow
+*.color3:       #ffe755
+*.color11:      #ff9f00
+
+! blue
+*.color4:       #048ac7
+*.color12:      #48c6ff
+
+! magenta
+*.color5:       #833c9f
+*.color13:      #be67e1
+
+! cyan
+*.color6:       #0ac1cd
+*.color14:      #63e7f0
+
+! white
+*.color7:       #e5e5e5
+*.color15:      #f3f3f3
+
