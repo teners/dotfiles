@@ -1,5 +1,5 @@
 # execute on boot ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-exec --no-startup-id i3-msg 'workspace 1; exec uxterm; exec xxkb; exec feh --randomize --bg-fill ~/media/pictures; exec xcompmgr'
+exec --no-startup-id i3-msg 'exec xcompmgr; exec ~/.autorun_i3; workspace $w1; exec uxterm'
 
 # variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # alt
@@ -48,32 +48,54 @@ bindsym $m4+a focus parent
 # focus the child container
 bindsym $m4+x focus child
 
+set $w0 "0:&#xf268;"
+set $w1 1:
+set $w2 2:
+set $w3 3:
+set $w4 4:
+set $w5 5:
+set $w6 6:
+set $w7 7:
+set $w8 8:
+set $w9 9:
+
+workspace $w0 output HDMI-1
+workspace $w1 output VGA-1
+workspace $w2 output VGA-1
+workspace $w3 output VGA-1
+workspace $w4 output VGA-1
+workspace $w5 output HDMI-1
+workspace $w6 output HDMI-1
+workspace $w7 output HDMI-1
+workspace $w8 output HDMI-1
+workspace $w9 output HDMI-1
+
 # workspaces ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # workspace bindings
-bindsym $m4+asciitilde workspace 0
-bindsym $m4+1          workspace 1
-bindsym $m4+2          workspace 2
-bindsym $m4+3          workspace 3
-bindsym $m4+4          workspace 4
-bindsym $m4+5          workspace 5
-bindsym $m4+6          workspace 6
-bindsym $m4+7          workspace 7
-bindsym $m4+8          workspace 8
-bindsym $m4+9          workspace 9
+bindsym $m4+asciitilde workspace $w0
+bindsym $m4+1          workspace $w1
+bindsym $m4+2          workspace $w2
+bindsym $m4+3          workspace $w3
+bindsym $m4+4          workspace $w4
+bindsym $m4+5          workspace $w5
+bindsym $m4+6          workspace $w6
+bindsym $m4+7          workspace $w7
+bindsym $m4+8          workspace $w8
+bindsym $m4+9          workspace $w9
 # "carousel" between workspaces
 bindsym $m4+Tab workspace next
 bindsym $m4+Shift+Tab workspace prev
 # move focused container to workspace
-bindsym $m4+Shift+asciitilde move container to workspace 0; workspace 0
-bindsym $m4+Shift+1 move container to workspace 1; workspace 1
-bindsym $m4+Shift+2 move container to workspace 2; workspace 2
-bindsym $m4+Shift+3 move container to workspace 3; workspace 3
-bindsym $m4+Shift+4 move container to workspace 4; workspace 4
-bindsym $m4+Shift+5 move container to workspace 5; workspace 5
-bindsym $m1+Shift+6 move container to workspace 6; workspace 6
-bindsym $m1+Shift+7 move container to workspace 7; workspace 7
-bindsym $m1+Shift+8 move container to workspace 8; workspace 8
-bindsym $m1+Shift+9 move container to workspace 9; workspace 9
+bindsym $m4+Shift+asciitilde move container to workspace $w0; workspace $w0
+bindsym $m4+Shift+1 move container to workspace $w1; workspace $w1
+bindsym $m4+Shift+2 move container to workspace $w2; workspace $w2
+bindsym $m4+Shift+3 move container to workspace $w3; workspace $w3
+bindsym $m4+Shift+4 move container to workspace $w4; workspace $w4
+bindsym $m4+Shift+5 move container to workspace $w5; workspace $w5
+bindsym $m4+Shift+6 move container to workspace $w6; workspace $w6
+bindsym $m4+Shift+7 move container to workspace $w7; workspace $w7
+bindsym $m4+Shift+8 move container to workspace $w8; workspace $w8
+bindsym $m4+Shift+9 move container to workspace $w9; workspace $w9
 
 # resize mode ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 bindsym $m4+r mode "resize"
@@ -95,37 +117,37 @@ mode "resize" {
 
 # font ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font xft: Meslo LG L DZ Regular for Powerline 8
-#font pango: Terminess Powerline 9 
+font pango: DejaVu Sans Mono Book 11
 
 # container borders ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # thickness
-new_float  pixel 0
-new_window pixel 0
+new_float  pixel 1
+new_window pixel 1
+#hide_edge_borders vertical
 # border colors
-client.unfocused        #bcbcbc #bcbcbc #151515 #bcbcbc
-client.focused_inactive #bcbcbc #bcbcbc #151515 #bcbcbc
-client.focused          #348899 #348899 #151515 #348899
-client.urgent           #962d3e #962d3e #151515 #962d3e
+#                       border  bg      text  
+client.unfocused        #303030 #222223 #e7e7e7 #222223
+client.focused_inactive #303030 #393939 #e7e7e7 #222223
+client.focused          #303030 #e7e7e7 #222223 #222223
+client.urgent           #303030 #0084ca #1b0b10 #0084ca
 
 # i3bar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 bar {
-	status_command ~/.i3/scripts/i3status.sh 
-	#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-	#font pango: Terminess Powerline 9
-	font: Lucida Console 8 #Meslo LG L DZ Regular for Powerline 8
+	status_command i3blocks 
+	tray_output VGA-1
+	font pango: FontAwesome, DejaVu Sans Mono Book 11
 	
 	position top
-    separator_symbol "|"
+    separator_symbol ""
 	colors {
-		background #1b0b10
-		statusline #867c75 
+		background #222223
+        statusline #e7e7e7 
 		separator  #867c75
 		#                  border  backgr. text
-        focused_workspace  #82354f #82354f #1b0b10
-		inactive_workspace #82354f #1b0b10 #867c75
-		urgent_workspace   #ff9900 #ff9900 #1b0b10
-		binding_mode       #962d3e #962d3e #1b0b10
+        focused_workspace  #e7e7e7 #e0e0e0 #262626
+		inactive_workspace #303030 #222223 #e7e7e7
+		urgent_workspace   #0084ca #0084ca #1b0b10
+		binding_mode       #8659b5 #8659b5 #f7f7f7
 	}
 }
 
@@ -143,14 +165,14 @@ bindsym $m4+Return exec uxterm
 bindsym $m4+q kill
 # run dmenu
 # bindsym $m4+d exec dmenu_run -fn 'Terminus-9' 
-bindsym $m4+d exec rofi -show run -config "/home/tener/.Xresourses" -color-enabled -separator-style "none" -lines "5" -width "30"
+bindsym $m4+d exec rofi -show run -config "/home/teners/.Xresourses" -separator-style "none" -lines "5"
 # audio ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # mute 
-bindsym XF86AudioMute exec amixer -q sset 'Master' toggle
+bindsym $m4+F11 exec amixer -c 1 -q sset 'Master' toggle
 # volume up
-bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 3.5dB+
+bindsym $m4+F10 exec amixer -c 1 -q sset 'Master' 3.5dB+
 # volume down
-bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 3.5dB-
+bindsym $m4+F9 exec amixer -c 1 -q sset 'Master' 3.5dB-
 # backlight ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # backlight up
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
@@ -161,15 +183,23 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 bindsym Print                  exec "scrot '%F__%T__$wx$h.png' -e 'mv $f ~/scrot/'"
 # snippingtool
 bindsym --release Shift+Print  exec "scrot --select '%F__%T__$wx$h.png' --exec 'mv $f ~/scrot/' --quality 100"
-# run telegram
-bindsym $m4+T exec telegram; workspace 3
 # lock screen
 bindsym $m4+Shift+x exec .i3/scripts/lock
 
 # custom containers preferences ~~~~~~~~~~~~~~~~~~~~~~~~
-assign [class="yandex-browser-beta"] → 2
-assign [class="telegram"] → 3
-assign [class="libreoffice"] → 4
-assign [class="evince"] → 4
-for_window [window_role="pop-up"]       floating enable
-for_window [window_role="task_dialog"]  floating enable
+# assign [class="chromium-browser"] → $w0
+# assign [class="jetbrains-clion"] → $w1
+assign [class="telegram"] → $w3
+assign [class="Telegram"] → $w3
+assign [class="Slack"] → $w3
+assign [class="gs-cas.slack.com"] → $w3
+assign [class="skype"] → $w4
+assign [class="Pidgin"] → $w4
+#assign [class="libreoffice"] → $w5
+#assign [class="evince"] → $w5
+for_window [window_role="pop-up"]              floating enable
+for_window [window_role="task_dialog"]         floating enable
+for_window [window_role="ConversationsWindow"] floating enable
+for_window [class="com-intellij-updater-Runner"] floating enable
+for_window [class="gs-cas.slack.com"] floating disable
+
