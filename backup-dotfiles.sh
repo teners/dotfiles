@@ -6,7 +6,7 @@ if [ -d "$DOTFILES" ]; then
     cd $DOTFILES
 else
     zenity --error --text="An error occured while executing $0: \
-                           \"$DOTFILES\" directory doesn\'t exists."
+                           \"$DOTFILES\" directory doesn\'t exist."
     exit
 fi
 
