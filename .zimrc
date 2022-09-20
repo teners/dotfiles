@@ -1,0 +1,16 @@
+zmodule completion
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule jeffreytse/zsh-vi-mode
+zmodule romkatv/powerlevel10k -u degit
+
+# zplug zsh-users/zsh-completions
+# zmodule oh-my-zsh/plugins/last-working-dir
+# zmodule oh-my-zsh/plugins/colored-man-pages
+# zmodule oh-my-zsh/plugins/docker
+# zmodule oh-my-zsh/plugins/docker-compose
+# zmodule oh-my-zsh/plugins/httpie
+# zmodule oh-my-zsh/plugins/kubectx
+# zmodule oh-my-zsh/plugins/pip
+# zmodule oh-my-zsh/plugins/vi-mode
+# zmodule oh-my-zsh/plugins/command-not-found

@@ -1,0 +1,9 @@
+-- require('nvim-treesitter.configs').setup({
+--   ensure_installed = {
+--     'python',
+--     'javascript', 'typescript', 'html', 'css', 'scss',
+--     'json', 'markdown', 'lua'
+--   },
+--   highlight = {enabled = true},
+--   indent =  {enabled = true}
+-- })
