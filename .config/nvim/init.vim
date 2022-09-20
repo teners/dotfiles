@@ -95,28 +95,16 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fs <cmd>lua require'telescope.builtin'.treesitter{}<cr>
 nnoremap <leader>rg <cmd>Telescope live_grep<cr>
 nnoremap <leader>gc <cmd>lua require'telescope.builtin'.git_commits{}<cr>
-"   " previously opened files
 nnoremap <leader>fh <cmd>lua require'telescope.builtin'.oldfiles{}<cr>
 nnoremap <leader>ch <cmd>lua require'telescope.builtin'.command_history{}<cr>
 nnoremap <leader>sh <cmd>lua require'telescope.builtin'.search_history{}<cr>
-"
-"   call plug#end()
 
-" nnoremap <leader>tt :tabe<CR>
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
 " ============ settings =============
 syntax enable
-
-" filetype off
-" let g:SnazzyTransparent = 1
 colorscheme tokyonight-night
-
-" let g:lightline = {
-"     \ 'colorscheme': 'snazzy',
-" \ }
-
 filetype indent plugin on
 
 let g:rg_command = '
@@ -130,6 +118,5 @@ language en_GB
 
 let g:loaded_python_provider = 1
 let g:python3_host_prog = '/usr/local/bin/python3'
-
 let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 1
