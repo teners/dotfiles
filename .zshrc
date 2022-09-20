@@ -52,7 +52,7 @@ zstyle :compinstall filename '~/.zshrc'
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' list-colors ''
-# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -63,12 +63,12 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # gcloud
-if [ -f '/Users/sergei.sokolov/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sergei.sokolov/tmp/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/sergei.sokolov/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/sergei.sokolov/tmp/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/tmp/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '$HOME/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/tmp/google-cloud-sdk/completion.zsh.inc'; fi
 export CLOUDSDK_PYTHON=python3.8
 
 # poetry
-export PATH=$PATH:/Users/sergei.sokolov/.local/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # nvm
